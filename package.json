@@ -23,6 +23,9 @@
   ],
   "author": "Figuro <engineering@figuro.la> (https://figuro.la)",
   "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
   "devDependencies": {
     "@types/node": "^18.7.16",
     "@typescript-eslint/eslint-plugin": "^5.36.2",
