@@ -15,7 +15,8 @@
     "format": "prettier --write src/**/* --loglevel warn",
     "lint": "npm exec -- eslint src/**/* --ext .ts --fix",
     "build": "tsc -b --clean && tsc --declaration",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "release": "release-it"
   },
   "keywords": [
     "chatwoot"
@@ -28,6 +29,7 @@
     "@typescript-eslint/parser": "^5.36.2",
     "eslint": "^8.23.0",
     "prettier": "^2.7.1",
+    "release-it": "^15.4.1",
     "typescript": "^4.8.3"
   },
   "dependencies": {
