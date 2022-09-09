@@ -1,7 +1,11 @@
 {
-  "name": "figuro-chatwoot-sdk",
+  "name": "@figuro/chatwoot-sdk",
   "version": "1.0.0",
   "description": "SDK for JS/Typescript for Chatwoot.",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/figurolatam/chatwoot-sdk.git"
+  },
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "files": [
