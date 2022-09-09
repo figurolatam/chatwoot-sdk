@@ -4,5 +4,8 @@
   },
   "git": {
     "requireBranch": "master"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }
