@@ -1,0 +1,32 @@
+{
+  "name": "figuro-chatwoot-sdk",
+  "version": "1.0.0",
+  "description": "SDK for JS/Typescript for Chatwoot.",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist/**/*"
+  ],
+  "scripts": {
+    "format": "prettier --write src/**/* --loglevel warn",
+    "lint": "npm exec -- eslint src/**/* --ext .ts --fix",
+    "build": "tsc -b --clean && tsc --declaration",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "chatwoot"
+  ],
+  "author": "Figuro <engineering@figuro.la> (https://figuro.la)",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^18.7.16",
+    "@typescript-eslint/eslint-plugin": "^5.36.2",
+    "@typescript-eslint/parser": "^5.36.2",
+    "eslint": "^8.23.0",
+    "prettier": "^2.7.1",
+    "typescript": "^4.8.3"
+  },
+  "dependencies": {
+    "axios": "^0.27.2"
+  }
+}
