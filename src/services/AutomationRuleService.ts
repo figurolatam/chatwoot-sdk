@@ -8,7 +8,7 @@ import type { CancelablePromise } from "../core/CancelablePromise";
 import { ChatwootAPIConfig } from "../core/ChatwootAPI";
 import { request as __request } from "../core/request";
 
-export class AutomationRuleService {
+export class AutomationRule {
     private chatwootAPI: ChatwootAPIConfig;
 
     constructor({ config }: { config: ChatwootAPIConfig }) {
@@ -55,7 +55,7 @@ export class AutomationRuleService {
      * @returns automation_rule Success
      * @throws ApiError
      */
-    public addNewAutomationRuleToAccount({
+    public createAutomationRule({
         accountId,
         data,
     }: {
@@ -84,7 +84,7 @@ export class AutomationRuleService {
      * @returns automation_rule Success
      * @throws ApiError
      */
-    public getDetailsOfASingleAutomationRule({
+    public getDetailsOfAutomationRule({
         accountId,
         id,
     }: {
@@ -117,7 +117,7 @@ export class AutomationRuleService {
      * @returns automation_rule Success
      * @throws ApiError
      */
-    public updateAutomationRuleInAccount({
+    public updateAutomationRule({
         accountId,
         id,
         data,
@@ -153,7 +153,7 @@ export class AutomationRuleService {
      * @returns any Success
      * @throws ApiError
      */
-    public deleteAutomationRuleFromAccount({
+    public deleteAutomationRule({
         accountId,
         id,
     }: {

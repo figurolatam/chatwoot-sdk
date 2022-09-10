@@ -8,7 +8,7 @@ import type { CancelablePromise } from "../core/CancelablePromise";
 import { ChatwootAPIConfig } from "../core/ChatwootAPI";
 import { request as __request } from "../core/request";
 
-export class AccountAgentBotsService {
+export class AccountAgentBots {
     private chatwootAPI: ChatwootAPIConfig;
 
     constructor({ config }: { config: ChatwootAPIConfig }) {
@@ -47,7 +47,7 @@ export class AccountAgentBotsService {
      * @returns agent_bot Success
      * @throws ApiError
      */
-    public createAnAccountAgentBot({
+    public createAccountAgentBot({
         accountId,
         data,
     }: {
@@ -109,7 +109,7 @@ export class AccountAgentBotsService {
      * @returns agent_bot Success
      * @throws ApiError
      */
-    public updateAnAccountAgentBot({
+    public updateAccountAgentBot({
         accountId,
         id,
         data,
@@ -144,7 +144,7 @@ export class AccountAgentBotsService {
      * @returns any Success
      * @throws ApiError
      */
-    public deleteAnAccountAgentBot({
+    public deleteAccountAgentBot({
         accountId,
         id,
     }: {

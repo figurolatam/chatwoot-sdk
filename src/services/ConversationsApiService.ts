@@ -7,7 +7,7 @@ import type { CancelablePromise } from "../core/CancelablePromise";
 import { ChatwootAPIConfig } from "../core/ChatwootAPI";
 import { request as __request } from "../core/request";
 
-export class ConversationsApiService {
+export class ConversationsApi {
     private chatwootAPI: ChatwootAPIConfig;
 
     constructor({ config }: { config: ChatwootAPIConfig }) {
@@ -20,7 +20,7 @@ export class ConversationsApiService {
      * @returns public_conversation Success
      * @throws ApiError
      */
-    public createAConversation({
+    public createConversation({
         inboxIdentifier,
         contactIdentifier,
     }: {
@@ -52,7 +52,7 @@ export class ConversationsApiService {
      * @returns public_conversation Success
      * @throws ApiError
      */
-    public listAllContactConversations({
+    public listAllConversations({
         inboxIdentifier,
         contactIdentifier,
     }: {

@@ -10,7 +10,7 @@ import type { CancelablePromise } from "../core/CancelablePromise";
 import { ChatwootAPIConfig } from "../core/ChatwootAPI";
 import { request as __request } from "../core/request";
 
-export class IntegrationsService {
+export class Integrations {
     private chatwootAPI: ChatwootAPIConfig;
 
     constructor({ config }: { config: ChatwootAPIConfig }) {
@@ -50,7 +50,7 @@ export class IntegrationsService {
      * @returns integrations_hook Success
      * @throws ApiError
      */
-    public createAnIntegrationHook({
+    public createIntegrationHook({
         accountId,
         data,
     }: {
@@ -79,7 +79,7 @@ export class IntegrationsService {
      * @returns integrations_hook Success
      * @throws ApiError
      */
-    public updateAnIntegrationsHook({
+    public updateIntegrationsHook({
         accountId,
         hookId,
         data,
@@ -114,7 +114,7 @@ export class IntegrationsService {
      * @returns any Success
      * @throws ApiError
      */
-    public deleteAnIntegrationHook({
+    public deleteIntegrationHook({
         accountId,
         hookId,
     }: {

@@ -9,7 +9,10 @@ import type { CancelablePromise } from "../core/CancelablePromise";
 import { ChatwootAPIConfig } from "../core/ChatwootAPI";
 import { request as __request } from "../core/request";
 
-export class MessagesApiService {
+/**
+ * Messages calls from Client API
+ */
+export class MessagesApi {
     private chatwootAPI: ChatwootAPIConfig;
 
     constructor({ config }: { config: ChatwootAPIConfig }) {
@@ -22,7 +25,7 @@ export class MessagesApiService {
      * @returns public_message Success
      * @throws ApiError
      */
-    public createAMessage({
+    public createMessage({
         inboxIdentifier,
         contactIdentifier,
         conversationId,
@@ -101,7 +104,7 @@ export class MessagesApiService {
      * @returns public_message Success
      * @throws ApiError
      */
-    public updateAMessage({
+    public updateMessage({
         inboxIdentifier,
         contactIdentifier,
         conversationId,

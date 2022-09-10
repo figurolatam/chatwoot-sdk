@@ -5,7 +5,7 @@ import type { CancelablePromise } from "../core/CancelablePromise";
 import { ChatwootAPIConfig } from "../core/ChatwootAPI";
 import { request as __request } from "../core/request";
 
-export class AccountUsersService {
+export class AccountUsers {
     private chatwootAPI: ChatwootAPIConfig;
 
     constructor({ config }: { config: ChatwootAPIConfig }) {
@@ -59,7 +59,7 @@ export class AccountUsersService {
      * @returns any Success
      * @throws ApiError
      */
-    public createAnAccountUser({
+    public createAccountUser({
         accountId,
         data,
     }: {
@@ -97,7 +97,7 @@ export class AccountUsersService {
      * @returns any Success
      * @throws ApiError
      */
-    public deleteAnAccountUser({
+    public deleteAccountUser({
         accountId,
         data,
     }: {

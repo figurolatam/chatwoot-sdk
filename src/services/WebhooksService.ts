@@ -8,7 +8,7 @@ import type { CancelablePromise } from "../core/CancelablePromise";
 import { ChatwootAPIConfig } from "../core/ChatwootAPI";
 import { request as __request } from "../core/request";
 
-export class WebhooksService {
+export class Webhooks {
     private chatwootAPI: ChatwootAPIConfig;
 
     constructor({ config }: { config: ChatwootAPIConfig }) {
@@ -47,7 +47,7 @@ export class WebhooksService {
      * @returns webhook Success
      * @throws ApiError
      */
-    public createAWebhook({
+    public createWebhook({
         accountId,
         data,
     }: {
@@ -76,7 +76,7 @@ export class WebhooksService {
      * @returns webhook Success
      * @throws ApiError
      */
-    public updateAWebhook({
+    public updateWebhook({
         accountId,
         webhookId,
         data,
@@ -111,7 +111,7 @@ export class WebhooksService {
      * @returns any Success
      * @throws ApiError
      */
-    public deleteAWebhook({
+    public deleteWebhook({
         accountId,
         webhookId,
     }: {

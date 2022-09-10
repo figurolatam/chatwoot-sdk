@@ -169,6 +169,7 @@ const getHeaders = async (
 
     if (isStringWithValue(token)) {
         headers["Authorization"] = `Bearer ${token}`;
+        headers["api_access_token"] = token;
     }
 
     if (isStringWithValue(username) && isStringWithValue(password)) {

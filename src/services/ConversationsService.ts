@@ -9,7 +9,7 @@ import type { CancelablePromise } from "../core/CancelablePromise";
 import { ChatwootAPIConfig } from "../core/ChatwootAPI";
 import { request as __request } from "../core/request";
 
-export class ConversationsService {
+export class Conversations {
     private chatwootAPI: ChatwootAPIConfig;
 
     constructor({ config }: { config: ChatwootAPIConfig }) {
@@ -78,7 +78,7 @@ export class ConversationsService {
      * @returns conversation_list Success
      * @throws ApiError
      */
-    public conversationList({
+    public listAllConversations({
         accountId,
         assigneeType = "all",
         status = "open",
@@ -141,7 +141,7 @@ export class ConversationsService {
      * @returns any Success
      * @throws ApiError
      */
-    public newConversation({
+    public createConversation({
         accountId,
         data,
     }: {

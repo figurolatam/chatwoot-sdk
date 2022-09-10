@@ -8,7 +8,7 @@ import type { CancelablePromise } from "../core/CancelablePromise";
 import { ChatwootAPIConfig } from "../core/ChatwootAPI";
 import { request as __request } from "../core/request";
 
-export class ContactsApiService {
+export class ContactsApi {
     private chatwootAPI: ChatwootAPIConfig;
 
     constructor({ config }: { config: ChatwootAPIConfig }) {
@@ -21,7 +21,7 @@ export class ContactsApiService {
      * @returns public_contact Success
      * @throws ApiError
      */
-    public createAContact({
+    public createContact({
         inboxIdentifier,
         data,
     }: {
@@ -50,7 +50,7 @@ export class ContactsApiService {
      * @returns public_contact Success
      * @throws ApiError
      */
-    public getDetailsOfAContact({
+    public getDetailsOfContact({
         inboxIdentifier,
         contactIdentifier,
     }: {
@@ -83,7 +83,7 @@ export class ContactsApiService {
      * @returns public_contact Success
      * @throws ApiError
      */
-    public updateAContact({
+    public updateContact({
         inboxIdentifier,
         contactIdentifier,
         data,

@@ -8,7 +8,7 @@ import type { CancelablePromise } from "../core/CancelablePromise";
 import { ChatwootAPIConfig } from "../core/ChatwootAPI";
 import { request as __request } from "../core/request";
 
-export class CannedResponsesService {
+export class CannedResponses {
     private chatwootAPI: ChatwootAPIConfig;
 
     constructor({ config }: { config: ChatwootAPIConfig }) {
@@ -21,7 +21,7 @@ export class CannedResponsesService {
      * @returns canned_response Success
      * @throws ApiError
      */
-    public getAccountCannedResponse({
+    public listAllCannedResponses({
         accountId,
     }: {
         /**
@@ -47,7 +47,7 @@ export class CannedResponsesService {
      * @returns canned_response Success
      * @throws ApiError
      */
-    public addNewCannedResponseToAccount({
+    public createCannedResponse({
         accountId,
         data,
     }: {
@@ -69,14 +69,48 @@ export class CannedResponsesService {
             },
         });
     }
-
+    /**
+         * Update Canned Response in Account
+         * Update a Canned Response in Account
+         * @returns canned_response Success
+         * @throws ApiError
+         */
+    public updateCannedResponse({
+        accountId,
+        id,
+        data,
+    }: {
+        /**
+         * The numeric ID of the account
+         */
+        accountId: number;
+        /**
+         * The ID of the canned response to be updated.
+         */
+        id: number;
+        data: canned_response_create_update_payload;
+    }): CancelablePromise<canned_response> {
+        return __request(this.chatwootAPI, {
+            method: "PATCH",
+            url: "/api/v1/accounts/{account_id}/canned_responses/{id}",
+            path: {
+                account_id: accountId,
+                id: id,
+            },
+            body: data,
+            errors: {
+                403: `Access denied`,
+                404: `Agent not found`,
+            },
+        });
+    }
     /**
      * Remove a Canned Response from Account
      * Remove a Canned Response from Account
      * @returns any Success
      * @throws ApiError
      */
-    public deleteCannedResponseFromAccount({
+    public deleteCannedResponse({
         accountId,
         id,
     }: {

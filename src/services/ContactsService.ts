@@ -11,7 +11,7 @@ import type { CancelablePromise } from "../core/CancelablePromise";
 import { ChatwootAPIConfig } from "../core/ChatwootAPI";
 import { request as __request } from "../core/request";
 
-export class ContactsService {
+export class Contacts {
     private chatwootAPI: ChatwootAPIConfig;
 
     constructor({ config }: { config: ChatwootAPIConfig }) {
@@ -24,7 +24,7 @@ export class ContactsService {
      * @returns contact_list Success
      * @throws ApiError
      */
-    public contactList({
+    public listAllContacts({
         accountId,
         sort,
         page = 1,
@@ -72,7 +72,7 @@ export class ContactsService {
      * @returns extended_contact Success
      * @throws ApiError
      */
-    public contactCreate({
+    public createContact({
         accountId,
         data,
     }: {
@@ -101,7 +101,7 @@ export class ContactsService {
      * @returns extended_contact Success
      * @throws ApiError
      */
-    public contactDetails({
+    public getDetailsOfContact({
         accountId,
         id,
     }: {
@@ -134,7 +134,7 @@ export class ContactsService {
      * @returns void
      * @throws ApiError
      */
-    public contactUpdate({
+    public updateContact({
         accountId,
         id,
         data,
@@ -169,7 +169,7 @@ export class ContactsService {
      * @returns any Success
      * @throws ApiError
      */
-    public contactDelete({
+    public deleteContact({
         accountId,
         id,
     }: {

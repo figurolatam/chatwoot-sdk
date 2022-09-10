@@ -8,7 +8,7 @@ import type { CancelablePromise } from "../core/CancelablePromise";
 import { ChatwootAPIConfig } from "../core/ChatwootAPI";
 import { request as __request } from "../core/request";
 
-export class CustomFiltersService {
+export class CustomFilters {
     private chatwootAPI: ChatwootAPIConfig;
 
     constructor({ config }: { config: ChatwootAPIConfig }) {
@@ -55,7 +55,7 @@ export class CustomFiltersService {
      * @returns custom_filter Success
      * @throws ApiError
      */
-    public createACustomFilter({
+    public createCustomFilter({
         accountId,
         data,
         filterType,
@@ -125,7 +125,7 @@ export class CustomFiltersService {
      * @returns custom_filter Success
      * @throws ApiError
      */
-    public updateACustomFilter({
+    public updateCustomFilter({
         accountId,
         customFilterId,
         data,
@@ -160,7 +160,7 @@ export class CustomFiltersService {
      * @returns any Success
      * @throws ApiError
      */
-    public deleteACustomFilter({
+    public deleteCustomFilter({
         accountId,
         customFilterId,
     }: {

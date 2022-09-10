@@ -9,7 +9,7 @@ import type { CancelablePromise } from "../core/CancelablePromise";
 import { ChatwootAPIConfig } from "../core/ChatwootAPI";
 import { request as __request } from "../core/request";
 
-export class TeamsService {
+export class Teams {
     private chatwootAPI: ChatwootAPIConfig;
 
     constructor({ config }: { config: ChatwootAPIConfig }) {
@@ -48,7 +48,7 @@ export class TeamsService {
      * @returns team Success
      * @throws ApiError
      */
-    public createATeam({
+    public createTeam({
         accountId,
         data,
     }: {
@@ -110,7 +110,7 @@ export class TeamsService {
      * @returns team Success
      * @throws ApiError
      */
-    public updateATeam({
+    public updateTeam({
         accountId,
         teamId,
         data,
@@ -145,7 +145,7 @@ export class TeamsService {
      * @returns any Success
      * @throws ApiError
      */
-    public deleteATeam({
+    public deleteTeam({
         accountId,
         teamId,
     }: {

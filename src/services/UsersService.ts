@@ -8,7 +8,7 @@ import type { CancelablePromise } from "../core/CancelablePromise";
 import { ChatwootAPIConfig } from "../core/ChatwootAPI";
 import { request as __request } from "../core/request";
 
-export class UsersService {
+export class Users {
     private chatwootAPI: ChatwootAPIConfig;
 
     constructor({ config }: { config: ChatwootAPIConfig }) {
@@ -21,7 +21,7 @@ export class UsersService {
      * @returns user Success
      * @throws ApiError
      */
-    public createAUser({ data }: { data: user_create_update_payload }): CancelablePromise<user> {
+    public createUser({ data }: { data: user_create_update_payload }): CancelablePromise<user> {
         return __request(this.chatwootAPI, {
             method: "POST",
             url: "/platform/api/v1/users",
@@ -38,7 +38,7 @@ export class UsersService {
      * @returns user Success
      * @throws ApiError
      */
-    public getDetailsOfAUser({
+    public getDetailsOfUser({
         id,
     }: {
         /**
@@ -65,7 +65,7 @@ export class UsersService {
      * @returns user Success
      * @throws ApiError
      */
-    public updateAUser({
+    public updateUser({
         id,
         data,
     }: {
@@ -94,7 +94,7 @@ export class UsersService {
      * @returns any Success
      * @throws ApiError
      */
-    public deleteAUser({
+    public deleteUser({
         id,
     }: {
         /**
@@ -121,7 +121,7 @@ export class UsersService {
      * @returns any Success
      * @throws ApiError
      */
-    public getSsoUrlOfAUser({
+    public getSsoUrlOfUser({
         id,
     }: {
         /**
