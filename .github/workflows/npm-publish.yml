@@ -26,6 +26,7 @@ jobs:
           node-version: 16
       - run: npm ci
       - run: npm config set //registry.npmjs.org/:_authToken ${{ secrets.NPM_TOKEN }}
+      - run: npm run build
       - run: npm run release -- --ci
         env:  
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

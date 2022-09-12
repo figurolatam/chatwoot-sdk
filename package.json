@@ -12,11 +12,11 @@
     "dist/**/*"
   ],
   "scripts": {
-    "format": "prettier --write src/**/* --loglevel warn",
-    "lint": "npm exec -- eslint src/**/* --ext .ts --fix",
-    "build": "tsc -b --clean && tsc --declaration",
+    "format": "npm exec -- prettier --write ./src --loglevel warn",
+    "lint": "npm exec -- eslint ./src --ext .ts --fix",
+    "build": "npm exec -- tsc -b --clean && npm exec -- tsc --declaration",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "release": "release-it"
+    "release": "npm exec -- release-it"
   },
   "keywords": [
     "chatwoot"
