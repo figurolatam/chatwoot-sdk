@@ -88,7 +88,7 @@ import { Webhooks } from './services/WebhooksService';
 
 import { ChatwootAPIConfig } from './core/ChatwootAPI';
 
-export default class ChatWootClient {
+export default class ChatwootClient {
     private chatwootAPI: ChatwootAPIConfig;
 
     constructor({

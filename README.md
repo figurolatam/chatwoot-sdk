@@ -1,16 +1,17 @@
 # Chatwoot API SDK
-![npm (scoped)](https://img.shields.io/npm/v/@figuro/chatwoot-sdk)![NPM](https://img.shields.io/npm/l/@figuro/chatwoot-sdk)
+![npm (scoped)](https://img.shields.io/npm/v/@figuro/chatwoot-sdk) ![NPM](https://img.shields.io/npm/l/@figuro/chatwoot-sdk)
+
 A client to connect with Chatwoot from Javascript with Typescript support.
 
 ## Installation
 
-Using *npm*:
+Using **npm**:
 
 ```shell
 npm i @figuro/chatwoot-sdk --save
 ```
 
-Using *yarn*:
+Using **yarn**:
 
 ```shell
 yarn add @figuro/chatwoot-sdk
