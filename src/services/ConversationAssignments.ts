@@ -19,8 +19,9 @@ export class ConversationAssignment {
      * Assign a conversation to an agent or a team
      * @returns user Success
      * @throws ApiError
+     * {@link https://www.chatwoot.com/developers/api/#tag/Conversation-Assignment/operation/assign-a-conversation}
      */
-    public assignAConversation({
+    public assign({
         accountId,
         conversationId,
         data,

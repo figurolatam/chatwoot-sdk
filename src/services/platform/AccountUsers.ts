@@ -1,9 +1,9 @@
 /* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
-import type { CancelablePromise } from "../core/CancelablePromise";
-import { ChatwootAPIConfig } from "../core/ChatwootAPI";
-import { request as __request } from "../core/request";
+import type { CancelablePromise } from "../../core/CancelablePromise";
+import { ChatwootAPIConfig } from "../../core/ChatwootAPI";
+import { request as __request } from "../../core/request";
 
 export class AccountUsers {
     private chatwootAPI: ChatwootAPIConfig;
@@ -18,7 +18,7 @@ export class AccountUsers {
      * @returns any Success
      * @throws ApiError
      */
-    public listAllAccountUsers({
+    public list({
         accountId,
     }: {
         /**
@@ -59,7 +59,7 @@ export class AccountUsers {
      * @returns any Success
      * @throws ApiError
      */
-    public createAccountUser({
+    public create({
         accountId,
         data,
     }: {
@@ -97,7 +97,7 @@ export class AccountUsers {
      * @returns any Success
      * @throws ApiError
      */
-    public deleteAccountUser({
+    public delete({
         accountId,
         data,
     }: {

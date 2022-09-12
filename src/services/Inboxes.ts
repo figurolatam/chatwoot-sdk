@@ -3,6 +3,7 @@
 /* eslint-disable */
 import type { agent } from "../models/agent";
 import type { inbox } from "../models/inbox";
+import type { agent_bot } from "../models/agent_bot";
 
 import type { CancelablePromise } from "../core/CancelablePromise";
 import { ChatwootAPIConfig } from "../core/ChatwootAPI";
@@ -20,8 +21,9 @@ export class Inboxes {
      * List all inboxes available in the current account
      * @returns inbox Success
      * @throws ApiError
+     * {@link https://www.chatwoot.com/developers/api/#tag/Inboxes/operation/listAllInboxes}
      */
-    public listAllInboxes({
+    public list({
         accountId,
     }: {
         /**
@@ -47,8 +49,9 @@ export class Inboxes {
      * Get an inbox available in the current account
      * @returns inbox Success
      * @throws ApiError
+     * {@link https://www.chatwoot.com/developers/api/#tag/Inboxes/operation/GetInbox}
      */
-    public getInbox({
+    public get({
         accountId,
         id,
     }: {
@@ -80,8 +83,9 @@ export class Inboxes {
      * You can create more than one website inbox in each account
      * @returns inbox Success
      * @throws ApiError
+     * {@link https://www.chatwoot.com/developers/api/#tag/Inboxes/operation/inboxCreation}
      */
-    public inboxCreation({
+    public create({
         accountId,
         data,
     }: {
@@ -142,8 +146,9 @@ export class Inboxes {
      * Add avatar and disable auto assignment for an inbox
      * @returns inbox Success
      * @throws ApiError
+     * {@link https://www.chatwoot.com/developers/api/#tag/Inboxes/operation/updateInbox}
      */
-    public updateInbox({
+    public update({
         accountId,
         id,
         data,
@@ -211,10 +216,11 @@ export class Inboxes {
     /**
      * Show Inbox Agent Bot
      * See if an agent bot is associated to the Inbox
-     * @returns void
+     * @returns agent_bot Success
      * @throws ApiError
+     * {@link https://www.chatwoot.com/developers/api/#tag/Inboxes/operation/getInboxAgentBot}
      */
-    public getInboxAgentBot({
+    public getAgentBot({
         accountId,
         id,
     }: {
@@ -226,7 +232,7 @@ export class Inboxes {
          * ID of the inbox
          */
         id: number;
-    }): CancelablePromise<void> {
+    }): CancelablePromise<agent_bot> {
         return __request(this.chatwootAPI, {
             method: "GET",
             url: "/api/v1/accounts/{account_id}/inboxes/{id}/agent_bot",
@@ -246,6 +252,7 @@ export class Inboxes {
      * To add an agent bot pass agent_bot id, to remove agent bot from an inbox pass null
      * @returns void
      * @throws ApiError
+     * {@link https://www.chatwoot.com/developers/api/#tag/Inboxes/operation/updateAgentBot}
      */
     public updateAgentBot({
         accountId,
@@ -266,7 +273,7 @@ export class Inboxes {
              */
             agent_bot: number;
         };
-    }): CancelablePromise<void> {
+    }): CancelablePromise<{ agent_bot: number }> {
         return __request(this.chatwootAPI, {
             method: "POST",
             url: "/api/v1/accounts/{account_id}/inboxes/{id}/set_agent_bot",
@@ -288,7 +295,7 @@ export class Inboxes {
      * @returns agent Success
      * @throws ApiError
      */
-    public getInboxMembers({
+    public listAgents({
         accountId,
         inboxId,
     }: {
@@ -321,7 +328,7 @@ export class Inboxes {
      * @returns any Success
      * @throws ApiError
      */
-    public deleteAgentInInbox({
+    public removeAgent({
         accountId,
         inboxId,
         data,
@@ -367,7 +374,7 @@ export class Inboxes {
      * @returns agent Success
      * @throws ApiError
      */
-    public addNewAgentToInbox({
+    public addAgent({
         accountId,
         data,
     }: {

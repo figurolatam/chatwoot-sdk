@@ -20,9 +20,9 @@ yarn add @figuro/chatwoot-sdk
 ## Example
 
 ```typescript
-import ChatWootClient from "@figuro/chatwoot-sdk";
+import ChatwootClient from "@figuro/chatwoot-sdk";
 
-const client = new ChatWootClient({
+const client = new ChatwootClient({
     config: {
         basePath: "https://app.chatwoot.com",
         with_credentials: true,
@@ -31,11 +31,17 @@ const client = new ChatWootClient({
     }
 });
 
-client.messages.createMessage({
+client.messages.create({
     accountId: 1,
     conversationId: 8,
     data: {
         content: "Hello, World!"
     }
-});
+})
+    .then(response => {
+        console.log(response.sender?.name);
+    })
+    .catch(err => {
+        console.error(err);
+    });
 ```

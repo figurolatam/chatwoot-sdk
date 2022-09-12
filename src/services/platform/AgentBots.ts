@@ -1,14 +1,14 @@
 /* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
-import type { agent_bot } from "../models/agent_bot";
-import type { agent_bot_create_update_payload } from "../models/agent_bot_create_update_payload";
+import type { agent_bot } from "../../models/agent_bot";
+import type { agent_bot_create_update_payload } from "../../models/agent_bot_create_update_payload";
 
-import type { CancelablePromise } from "../core/CancelablePromise";
-import { ChatwootAPIConfig } from "../core/ChatwootAPI";
-import { request as __request } from "../core/request";
+import type { CancelablePromise } from "../../core/CancelablePromise";
+import { ChatwootAPIConfig } from "../../core/ChatwootAPI";
+import { request as __request } from "../../core/request";
 
-export class AccountAgentBots {
+export class AgentBots {
     private chatwootAPI: ChatwootAPIConfig;
 
     constructor({ config }: { config: ChatwootAPIConfig }) {
@@ -17,24 +17,14 @@ export class AccountAgentBots {
 
     /**
      * List all AgentBots
-     * List all agent bots available for the current account
+     * List all agent bots available
      * @returns agent_bot Success
      * @throws ApiError
      */
-    public listAllAccountAgentBots({
-        accountId,
-    }: {
-        /**
-         * The numeric ID of the account
-         */
-        accountId: number;
-    }): CancelablePromise<Array<agent_bot>> {
+    public list(): CancelablePromise<Array<agent_bot>> {
         return __request(this.chatwootAPI, {
             method: "GET",
-            url: "/api/v1/accounts/{account_id}/agent_bots",
-            path: {
-                account_id: accountId,
-            },
+            url: "/platform/api/v1/agent_bots",
             errors: {
                 401: `Unauthorized`,
             },
@@ -43,26 +33,14 @@ export class AccountAgentBots {
 
     /**
      * Create an Agent Bot
-     * Create an agent bot in the account
+     * Create an agent bot
      * @returns agent_bot Success
      * @throws ApiError
      */
-    public createAccountAgentBot({
-        accountId,
-        data,
-    }: {
-        /**
-         * The numeric ID of the account
-         */
-        accountId: number;
-        data: agent_bot_create_update_payload;
-    }): CancelablePromise<agent_bot> {
+    public create({ data }: { data: agent_bot_create_update_payload }): CancelablePromise<agent_bot> {
         return __request(this.chatwootAPI, {
             method: "POST",
-            url: "/api/v1/accounts/{account_id}/agent_bots",
-            path: {
-                account_id: accountId,
-            },
+            url: "/platform/api/v1/agent_bots",
             body: data,
             errors: {
                 401: `Unauthorized`,
@@ -72,18 +50,13 @@ export class AccountAgentBots {
 
     /**
      * Get an agent bot details
-     * Get the details of an agent bot in the account
+     * Get the details of an agent bot
      * @returns agent_bot Success
      * @throws ApiError
      */
-    public getDetailsOfASingleAccountAgentBot({
-        accountId,
+    public get({
         id,
     }: {
-        /**
-         * The numeric ID of the account
-         */
-        accountId: number;
         /**
          * The ID of the agentbot to be updated
          */
@@ -91,14 +64,13 @@ export class AccountAgentBots {
     }): CancelablePromise<agent_bot> {
         return __request(this.chatwootAPI, {
             method: "GET",
-            url: "/api/v1/accounts/{account_id}/agent_bots/{id}",
+            url: "/platform/api/v1/agent_bots/{id}",
             path: {
-                account_id: accountId,
                 id: id,
             },
             errors: {
                 401: `Unauthorized`,
-                404: `The given agent bot ID does not exist in the account`,
+                404: `The given agent bot ID does not exist`,
             },
         });
     }
@@ -109,15 +81,10 @@ export class AccountAgentBots {
      * @returns agent_bot Success
      * @throws ApiError
      */
-    public updateAccountAgentBot({
-        accountId,
+    public update({
         id,
         data,
     }: {
-        /**
-         * The numeric ID of the account
-         */
-        accountId: number;
         /**
          * The ID of the agentbot to be updated
          */
@@ -126,9 +93,8 @@ export class AccountAgentBots {
     }): CancelablePromise<agent_bot> {
         return __request(this.chatwootAPI, {
             method: "PATCH",
-            url: "/api/v1/accounts/{account_id}/agent_bots/{id}",
+            url: "/platform/api/v1/agent_bots/{id}",
             path: {
-                account_id: accountId,
                 id: id,
             },
             body: data,
@@ -140,18 +106,13 @@ export class AccountAgentBots {
 
     /**
      * Delete an AgentBot
-     * Delete an AgentBot from the account
+     * Delete an AgentBot
      * @returns any Success
      * @throws ApiError
      */
-    public deleteAccountAgentBot({
-        accountId,
+    public delete({
         id,
     }: {
-        /**
-         * The numeric ID of the account
-         */
-        accountId: number;
         /**
          * The ID of the agentbot to be updated
          */
@@ -159,14 +120,13 @@ export class AccountAgentBots {
     }): CancelablePromise<any> {
         return __request(this.chatwootAPI, {
             method: "DELETE",
-            url: "/api/v1/accounts/{account_id}/agent_bots/{id}",
+            url: "/platform/api/v1/agent_bots/{id}",
             path: {
-                account_id: accountId,
                 id: id,
             },
             errors: {
                 401: `Unauthorized`,
-                404: `The agent bot does not exist in the account`,
+                404: `The agent bot does not exist`,
             },
         });
     }

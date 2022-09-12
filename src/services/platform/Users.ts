@@ -1,12 +1,12 @@
 /* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
-import type { user } from "../models/user";
-import type { user_create_update_payload } from "../models/user_create_update_payload";
+import type { user } from "../../models/user";
+import type { user_create_update_payload } from "../../models/user_create_update_payload";
 
-import type { CancelablePromise } from "../core/CancelablePromise";
-import { ChatwootAPIConfig } from "../core/ChatwootAPI";
-import { request as __request } from "../core/request";
+import type { CancelablePromise } from "../../core/CancelablePromise";
+import { ChatwootAPIConfig } from "../../core/ChatwootAPI";
+import { request as __request } from "../../core/request";
 
 export class Users {
     private chatwootAPI: ChatwootAPIConfig;
@@ -21,7 +21,7 @@ export class Users {
      * @returns user Success
      * @throws ApiError
      */
-    public createUser({ data }: { data: user_create_update_payload }): CancelablePromise<user> {
+    public create({ data }: { data: user_create_update_payload }): CancelablePromise<user> {
         return __request(this.chatwootAPI, {
             method: "POST",
             url: "/platform/api/v1/users",
@@ -38,7 +38,7 @@ export class Users {
      * @returns user Success
      * @throws ApiError
      */
-    public getDetailsOfUser({
+    public get({
         id,
     }: {
         /**
@@ -65,7 +65,7 @@ export class Users {
      * @returns user Success
      * @throws ApiError
      */
-    public updateUser({
+    public update({
         id,
         data,
     }: {
@@ -94,7 +94,7 @@ export class Users {
      * @returns any Success
      * @throws ApiError
      */
-    public deleteUser({
+    public delete({
         id,
     }: {
         /**
@@ -121,7 +121,7 @@ export class Users {
      * @returns any Success
      * @throws ApiError
      */
-    public getSsoUrlOfUser({
+    public getSSOUrl({
         id,
     }: {
         /**

@@ -20,7 +20,7 @@ export class Agents {
      * @returns agent Success
      * @throws ApiError
      */
-    public listAllAccountAgents({
+    public list({
         accountId,
     }: {
         /**
@@ -46,7 +46,7 @@ export class Agents {
      * @returns agent Success
      * @throws ApiError
      */
-    public createAgent({
+    public create({
         accountId,
         data,
     }: {
@@ -96,7 +96,7 @@ export class Agents {
      * @returns agent Success
      * @throws ApiError
      */
-    public updateAgent({
+    public update({
         accountId,
         id,
         data,
@@ -145,7 +145,7 @@ export class Agents {
      * @returns any Success
      * @throws ApiError
      */
-    public deleteAgent({
+    public delete({
         accountId,
         id,
     }: {

@@ -20,7 +20,7 @@ export class Profile {
      * @returns user Success
      * @throws ApiError
      */
-    public fetchProfile(): CancelablePromise<user> {
+    public profile(): CancelablePromise<user> {
         return __request(this.chatwootAPI, {
             method: "GET",
             url: "/profile",

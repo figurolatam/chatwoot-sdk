@@ -1,12 +1,12 @@
 /* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
-import type { public_contact } from "../models/public_contact";
-import type { public_contact_create_update_payload } from "../models/public_contact_create_update_payload";
+import type { public_contact } from "../../models/public_contact";
+import type { public_contact_create_update_payload } from "../../models/public_contact_create_update_payload";
 
-import type { CancelablePromise } from "../core/CancelablePromise";
-import { ChatwootAPIConfig } from "../core/ChatwootAPI";
-import { request as __request } from "../core/request";
+import type { CancelablePromise } from "../../core/CancelablePromise";
+import { ChatwootAPIConfig } from "../../core/ChatwootAPI";
+import { request as __request } from "../../core/request";
 
 export class ContactsApi {
     private chatwootAPI: ChatwootAPIConfig;
@@ -21,7 +21,7 @@ export class ContactsApi {
      * @returns public_contact Success
      * @throws ApiError
      */
-    public createContact({
+    public create({
         inboxIdentifier,
         data,
     }: {
@@ -50,7 +50,7 @@ export class ContactsApi {
      * @returns public_contact Success
      * @throws ApiError
      */
-    public getDetailsOfContact({
+    public get({
         inboxIdentifier,
         contactIdentifier,
     }: {
@@ -83,7 +83,7 @@ export class ContactsApi {
      * @returns public_contact Success
      * @throws ApiError
      */
-    public updateContact({
+    public update({
         inboxIdentifier,
         contactIdentifier,
         data,

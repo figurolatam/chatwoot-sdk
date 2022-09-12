@@ -19,8 +19,9 @@ export class ConversationLabels {
      * Lists all the labels of a conversation
      * @returns conversation_labels Success
      * @throws ApiError
+     * {@link https://www.chatwoot.com/developers/api/#tag/Conversation-Labels/operation/list-all-labels-of-a-conversation}
      */
-    public listAllLabelsOfAConversation({
+    public list({
         accountId,
         conversationId,
     }: {
@@ -52,8 +53,9 @@ export class ConversationLabels {
      * Add labels to a conversation. Note that this API would overwrite the existing list of labels associated to the conversation.
      * @returns conversation_labels Success
      * @throws ApiError
+     * {@link https://www.chatwoot.com/developers/api/#tag/Conversation-Labels/operation/conversation-add-labels}
      */
-    public conversationAddLabels({
+    public add({
         accountId,
         conversationId,
         data,

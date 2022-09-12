@@ -21,7 +21,7 @@ export class Reports {
      * @returns any Success
      * @throws ApiError
      */
-    public listAllConversationStatistics({
+    public list({
         accountId,
         metric,
         type,
@@ -91,7 +91,7 @@ export class Reports {
      * @returns account_summary Success
      * @throws ApiError
      */
-    public listAllConversationStatisticsSummary({
+    public listSummaries({
         accountId,
         type,
         id,
@@ -144,7 +144,7 @@ export class Reports {
      * @returns any Success
      * @throws ApiError
      */
-    public getAccountConversationMetrics({
+    public getMetrics({
         accountId,
         type,
     }: {
@@ -183,7 +183,7 @@ export class Reports {
      * @returns agent_conversation_metrics Success
      * @throws ApiError
      */
-    public getAgentConversationMetrics({
+    public getAgentMetrics({
         accountId,
         type,
         userId,

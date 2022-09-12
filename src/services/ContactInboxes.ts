@@ -21,7 +21,7 @@ export class Contact {
      * @returns contact_inboxes Success
      * @throws ApiError
      */
-    public contactInboxCreation({
+    public create({
         accountId,
         id,
         data,
@@ -66,7 +66,7 @@ export class Contact {
      * @returns contactable_inboxes Success
      * @throws ApiError
      */
-    public contactableInboxesGet({
+    public getContactable({
         accountId,
         id,
     }: {

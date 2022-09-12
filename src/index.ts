@@ -60,31 +60,31 @@ export type { user_create_update_payload } from './models/user_create_update_pay
 export type { webhook } from './models/webhook';
 export type { webhook_create_update_payload } from './models/webhook_create_update_payload';
 
-import { AccountAgentBots } from './services/AccountAgentBotsService';
-import { Accounts } from './services/AccountsService';
-import { AccountUsers } from './services/AccountUsersService';
-import { AgentBots } from './services/AgentBotsService';
-import { Agents } from './services/AgentsService';
-import { AutomationRule } from './services/AutomationRuleService';
-import { CannedResponses } from './services/CannedResponsesService';
-import { Contact } from './services/ContactInboxService';
-import { Contacts } from './services/ContactsService';
-import { ContactsApi } from './services/ContactsApiService';
-import { ConversationAssignment } from './services/ConversationAssignmentService';
-import { ConversationLabels } from './services/ConversationLabelsService';
-import { Conversations } from './services/ConversationsService';
-import { ConversationsApi } from './services/ConversationsApiService';
-import { CustomAttributes } from './services/CustomAttributesService';
-import { CustomFilters } from './services/CustomFiltersService';
-import { Inboxes } from './services/InboxesService';
-import { Integrations } from './services/IntegrationsService';
-import { Messages } from './services/MessagesService';
-import { MessagesApi } from './services/MessagesApiService';
-import { Profile } from './services/ProfileService';
-import { Reports } from './services/ReportsService';
-import { Teams } from './services/TeamsService';
-import { Users } from './services/UsersService';
-import { Webhooks } from './services/WebhooksService';
+import { AccountAgentBots } from './services/AccountAgentBots';
+import { Accounts } from './services/platform/Accounts';
+import { AccountUsers } from './services/platform/AccountUsers';
+import { AgentBots } from './services/platform/AgentBots';
+import { Agents } from './services/Agents';
+import { AutomationRule } from './services/AutomationRules';
+import { CannedResponses } from './services/CannedResponses';
+import { Contact } from './services/ContactInboxes';
+import { Contacts } from './services/Contacts';
+import { ContactsApi } from './services/client/Contacts';
+import { ConversationAssignment } from './services/ConversationAssignments';
+import { ConversationLabels } from './services/ConversationLabels';
+import { Conversations } from './services/Conversations';
+import { ConversationsApi } from './services/client/Conversations';
+import { CustomAttributes } from './services/CustomAttributes';
+import { CustomFilters } from './services/CustomFilters';
+import { Inboxes } from './services/Inboxes';
+import { Integrations } from './services/Integrations';
+import { Messages } from './services/Messages';
+import { MessagesApi } from './services/client/Messages';
+import { Profile } from './services/Profile';
+import { Reports } from './services/Reports';
+import { Teams } from './services/Teams';
+import { Users } from './services/platform/Users';
+import { Webhooks } from './services/Webhooks';
 
 import { ChatwootAPIConfig } from './core/ChatwootAPI';
 
@@ -98,17 +98,30 @@ export default class ChatwootClient {
     }) {
         this.chatwootAPI = config;
 
+        this.client = {
+            contacts: new ContactsApi({ config: config }),
+            conversations: new ConversationsApi({ config: config }),
+            messages: new MessagesApi({ config: config })
+        }
+
+        this.platform = {
+            accounts: new Accounts({ config: config }),
+            accountUsers: new AccountUsers({ config: config }),
+            agentBots: new AgentBots({ config: config }),
+            users: new Users({ config: config })
+        }
+
         this.accountAgentBots = new AccountAgentBots({ config: config });
-        this.accounts = new Accounts({ config: config });
-        this.accountUsers = new AccountUsers({ config: config });
+        
+        
         this.agentBots = new AgentBots({ config: config });
         this.agents = new Agents({ config: config });
         this.automationRule = new AutomationRule({ config: config });
         this.cannedResponses = new CannedResponses({ config: config });
         this.contact = new Contact({ config: config });
         this.contacts = new Contacts({ config: config });
-        this.contactsApi = new ContactsApi({ config: config });
-        this.conversationsApi = new ConversationsApi({ config: config });
+        
+   
         this.customAttributes = new CustomAttributes({ config: config });
         this.conversationAssignment = new ConversationAssignment({ config: config });
         this.conversationLabels = new ConversationLabels({ config: config });
@@ -117,7 +130,7 @@ export default class ChatwootClient {
         this.inboxes = new Inboxes({ config: config });
         this.integrations = new Integrations({ config: config });
         this.messages = new Messages({ config: config });
-        this.messagesApi = new MessagesApi({ config: config });
+        
         this.profile = new Profile({ config: config });
         this.reports = new Reports({ config: config });
         this.teams = new Teams({ config: config });
@@ -125,26 +138,24 @@ export default class ChatwootClient {
         this.webhooks = new Webhooks({ config: config });
     }
 
+    public client = {};
+    public platform = {};
+
     public accountAgentBots: AccountAgentBots;
-    public accounts: Accounts;
-    public accountUsers: AccountUsers;
     public agentBots: AgentBots;
     public agents: Agents;
     public automationRule: AutomationRule;
     public cannedResponses: CannedResponses;
     public contact: Contact;
     public contacts: Contacts;
-    public contactsApi: ContactsApi;
     public conversationAssignment: ConversationAssignment;
     public conversationLabels: ConversationLabels;
     public conversations: Conversations;
-    public conversationsApi: ConversationsApi;
     public customAttributes: CustomAttributes;
     public customFilters: CustomFilters;
     public inboxes: Inboxes;
     public integrations: Integrations;
     public messages: Messages;
-    public messagesApi: MessagesApi;
     public profile: Profile;
     public reports: Reports;
     public teams: Teams;

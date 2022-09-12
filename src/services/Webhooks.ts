@@ -1,14 +1,14 @@
 /* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
-import type { account_create_update_payload } from "../models/account_create_update_payload";
-import type { platform_account } from "../models/platform_account";
+import type { webhook } from "../models/webhook";
+import type { webhook_create_update_payload } from "../models/webhook_create_update_payload";
 
 import type { CancelablePromise } from "../core/CancelablePromise";
 import { ChatwootAPIConfig } from "../core/ChatwootAPI";
 import { request as __request } from "../core/request";
 
-export class Accounts {
+export class Webhooks {
     private chatwootAPI: ChatwootAPIConfig;
 
     constructor({ config }: { config: ChatwootAPIConfig }) {
@@ -16,56 +16,38 @@ export class Accounts {
     }
 
     /**
-     * Create an Account
-     * Create an Account
-     * @returns platform_account Success
+     * List all webhooks
+     * List all webhooks in the account
+     * @returns webhook Success
      * @throws ApiError
      */
-    public createAccount({ data }: { data: account_create_update_payload }): CancelablePromise<platform_account> {
-        return __request(this.chatwootAPI, {
-            method: "POST",
-            url: "/platform/api/v1/accounts",
-            body: data,
-            errors: {
-                401: `Unauthorized`,
-            },
-        });
-    }
-
-    /**
-     * Get an account details
-     * Get the details of an account
-     * @returns platform_account Success
-     * @throws ApiError
-     */
-    public getDetailsOfAccount({
+    public list({
         accountId,
     }: {
         /**
          * The numeric ID of the account
          */
         accountId: number;
-    }): CancelablePromise<platform_account> {
+    }): CancelablePromise<Array<webhook>> {
         return __request(this.chatwootAPI, {
             method: "GET",
-            url: "/platform/api/v1/accounts/{account_id}",
+            url: "/api/v1/accounts/{account_id}/webhooks",
             path: {
                 account_id: accountId,
             },
             errors: {
                 401: `Unauthorized`,
-                404: `The given account does not exist`,
             },
         });
     }
 
     /**
-     * Update an account
-     * Update an account's attributes
-     * @returns platform_account Success
+     * Add a webhook
+     * Add a webhook subscription to the account
+     * @returns webhook Success
      * @throws ApiError
      */
-    public updateAccount({
+    public create({
         accountId,
         data,
     }: {
@@ -73,11 +55,11 @@ export class Accounts {
          * The numeric ID of the account
          */
         accountId: number;
-        data: account_create_update_payload;
-    }): CancelablePromise<platform_account> {
+        data: webhook_create_update_payload;
+    }): CancelablePromise<webhook> {
         return __request(this.chatwootAPI, {
-            method: "PATCH",
-            url: "/platform/api/v1/accounts/{account_id}",
+            method: "POST",
+            url: "/api/v1/accounts/{account_id}/webhooks",
             path: {
                 account_id: accountId,
             },
@@ -89,28 +71,69 @@ export class Accounts {
     }
 
     /**
-     * Delete an Account
-     * Delete an Account
-     * @returns any Success
+     * Update a webhook object
+     * Update a webhook object in the account
+     * @returns webhook Success
      * @throws ApiError
      */
-    public deleteAccount({
+    public update({
         accountId,
+        webhookId,
+        data,
     }: {
         /**
          * The numeric ID of the account
          */
         accountId: number;
+        /**
+         * The numeric ID of the webhook
+         */
+        webhookId: number;
+        data: webhook_create_update_payload;
+    }): CancelablePromise<webhook> {
+        return __request(this.chatwootAPI, {
+            method: "PATCH",
+            url: "/api/v1/accounts/{account_id}/webhooks/{webhook_id}",
+            path: {
+                account_id: accountId,
+                webhook_id: webhookId,
+            },
+            body: data,
+            errors: {
+                401: `Unauthorized`,
+            },
+        });
+    }
+
+    /**
+     * Delete a webhook
+     * Delete a webhook from the account
+     * @returns any Success
+     * @throws ApiError
+     */
+    public delete({
+        accountId,
+        webhookId,
+    }: {
+        /**
+         * The numeric ID of the account
+         */
+        accountId: number;
+        /**
+         * The numeric ID of the webhook
+         */
+        webhookId: number;
     }): CancelablePromise<any> {
         return __request(this.chatwootAPI, {
             method: "DELETE",
-            url: "/platform/api/v1/accounts/{account_id}",
+            url: "/api/v1/accounts/{account_id}/webhooks/{webhook_id}",
             path: {
                 account_id: accountId,
+                webhook_id: webhookId,
             },
             errors: {
                 401: `Unauthorized`,
-                404: `The account does not exist`,
+                404: `The webhook does not exist in the account`,
             },
         });
     }

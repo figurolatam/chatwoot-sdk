@@ -1,13 +1,13 @@
 /* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
-import type { public_message } from "../models/public_message";
-import type { public_message_create_payload } from "../models/public_message_create_payload";
-import type { public_message_update_payload } from "../models/public_message_update_payload";
+import type { public_message } from "../../models/public_message";
+import type { public_message_create_payload } from "../../models/public_message_create_payload";
+import type { public_message_update_payload } from "../../models/public_message_update_payload";
 
-import type { CancelablePromise } from "../core/CancelablePromise";
-import { ChatwootAPIConfig } from "../core/ChatwootAPI";
-import { request as __request } from "../core/request";
+import type { CancelablePromise } from "../../core/CancelablePromise";
+import { ChatwootAPIConfig } from "../../core/ChatwootAPI";
+import { request as __request } from "../../core/request";
 
 /**
  * Messages calls from Client API
@@ -25,7 +25,7 @@ export class MessagesApi {
      * @returns public_message Success
      * @throws ApiError
      */
-    public createMessage({
+    public create({
         inboxIdentifier,
         contactIdentifier,
         conversationId,
@@ -66,7 +66,7 @@ export class MessagesApi {
      * @returns public_message Success
      * @throws ApiError
      */
-    public listAllConverationMessages({
+    public list({
         inboxIdentifier,
         contactIdentifier,
         conversationId,
@@ -104,7 +104,7 @@ export class MessagesApi {
      * @returns public_message Success
      * @throws ApiError
      */
-    public updateMessage({
+    public update({
         inboxIdentifier,
         contactIdentifier,
         conversationId,

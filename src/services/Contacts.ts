@@ -23,8 +23,9 @@ export class Contacts {
      * Listing all the resolved contacts with pagination (Page size = 15) . Resolved contacts are the ones with a value for identifier, email or phone number
      * @returns contact_list Success
      * @throws ApiError
+     * {@link https://www.chatwoot.com/developers/api/#tag/Contacts/operation/contactList}
      */
-    public listAllContacts({
+    public list({
         accountId,
         sort,
         page = 1,
@@ -71,8 +72,9 @@ export class Contacts {
      * Create a new Contact
      * @returns extended_contact Success
      * @throws ApiError
+     * {@link https://www.chatwoot.com/developers/api/#tag/Contacts/operation/contactCreate}
      */
-    public createContact({
+    public create({
         accountId,
         data,
     }: {
@@ -100,8 +102,9 @@ export class Contacts {
      * Get a contact belonging to the account using ID
      * @returns extended_contact Success
      * @throws ApiError
+     * {@link https://www.chatwoot.com/developers/api/#tag/Contacts/operation/contactDetails}
      */
-    public getDetailsOfContact({
+    public get({
         accountId,
         id,
     }: {
@@ -133,8 +136,9 @@ export class Contacts {
      * Update a contact belonging to the account using ID
      * @returns void
      * @throws ApiError
+     * {@link https://www.chatwoot.com/developers/api/#tag/Contacts/operation/contactUpdate}
      */
-    public updateContact({
+    public update({
         accountId,
         id,
         data,
@@ -168,8 +172,9 @@ export class Contacts {
      * Delete Contact
      * @returns any Success
      * @throws ApiError
+     * {@link https://www.chatwoot.com/developers/api/#tag/Contacts/operation/contactDelete}
      */
-    public deleteContact({
+    public delete({
         accountId,
         id,
     }: {
@@ -201,8 +206,9 @@ export class Contacts {
      * Get conversations associated to that contact
      * @returns contact_conversations Success
      * @throws ApiError
+     * {@link https://www.chatwoot.com/developers/api/#tag/Contacts/operation/contactConversations}
      */
-    public contactConversations({
+    public listConversations({
         accountId,
         id,
     }: {
@@ -232,10 +238,11 @@ export class Contacts {
     /**
      * Search Contacts
      * Search the resolved contacts using a search key, currently supports email search (Page size = 15). Resolved contacts are the ones with a value for identifier, email or phone number
-     * @returns any Success
+     * @returns contact_list Success
      * @throws ApiError
+     * {@link https://www.chatwoot.com/developers/api/#tag/Contacts/operation/contactSearch}
      */
-    public contactSearch({
+    public search({
         accountId,
         q,
         sort,
@@ -290,8 +297,9 @@ export class Contacts {
      * Filter contacts with custom filter options and pagination
      * @returns contact_list Success
      * @throws ApiError
+     * {@link https://www.chatwoot.com/developers/api/#tag/Contacts/operation/contactFilter}
      */
-    public contactFilter({
+    public filter({
         accountId,
         payload,
         page,

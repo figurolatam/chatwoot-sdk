@@ -84,3 +84,5 @@ typings/
 .pm2/
 
 dist
+
+.npmrc

@@ -1,6 +1,7 @@
 /* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
+import type { conversation } from "../models/conversation";
 import type { conversation_list } from "../models/conversation_list";
 import type { conversation_show } from "../models/conversation_show";
 import type { conversation_status_toggle } from "../models/conversation_status_toggle";
@@ -21,8 +22,9 @@ export class Conversations {
      * Get open, unassigned and all Conversation counts
      * @returns any Success
      * @throws ApiError
+     * {@link https://www.chatwoot.com/developers/api/#tag/Conversations/operation/conversationListMeta}
      */
-    public conversationListMeta({
+    public getMeta({
         accountId,
         status = "open",
         q,
@@ -77,8 +79,9 @@ export class Conversations {
      * List all the conversations with pagination
      * @returns conversation_list Success
      * @throws ApiError
+     * {@link https://www.chatwoot.com/developers/api/#tag/Conversations/operation/conversationList}
      */
-    public listAllConversations({
+    public list({
         accountId,
         assigneeType = "all",
         status = "open",
@@ -138,10 +141,11 @@ export class Conversations {
      * Creating a conversation in chatwoot requires a source id.
      *
      * Learn more about source_id: https://github.com/chatwoot/chatwoot/wiki/Building-on-Top-of-Chatwoot:-Importing-Existing-Contacts-and-Creating-Conversations
-     * @returns any Success
+     * @returns Pick<conversation, "id" | "account_id" | "inbox_id"> Success
      * @throws ApiError
+     * {@link https://www.chatwoot.com/developers/api/#tag/Conversations/operation/newConversation}
      */
-    public createConversation({
+    public create({
         accountId,
         data,
     }: {
@@ -183,20 +187,7 @@ export class Conversations {
              */
             team_id?: string;
         };
-    }): CancelablePromise<{
-        /**
-         * ID of the conversation
-         */
-        id?: number;
-        /**
-         * Account Id
-         */
-        account_id?: number;
-        /**
-         * ID of the inbox
-         */
-        inbox_id?: number;
-    }> {
+    }): CancelablePromise<Pick<conversation, "id" | "account_id" | "inbox_id">> {
         return __request(this.chatwootAPI, {
             method: "POST",
             url: "/api/v1/accounts/{account_id}/conversations",
@@ -215,8 +206,9 @@ export class Conversations {
      * Filter conversations with custom filter options and pagination
      * @returns conversation_list Success
      * @throws ApiError
+     * {@link https://www.chatwoot.com/developers/api/#tag/Conversations/operation/conversationFilter}
      */
-    public conversationFilter({
+    public filter({
         accountId,
         payload,
         page,
@@ -266,8 +258,9 @@ export class Conversations {
      * Get all details regarding a conversation with all messages in the conversation
      * @returns conversation_show Success
      * @throws ApiError
+     * {@link https://www.chatwoot.com/developers/api/#tag/Conversations/operation/get-details-of-a-conversation}
      */
-    public getDetailsOfAConversation({
+    public get({
         accountId,
         conversationId,
     }: {
@@ -299,8 +292,9 @@ export class Conversations {
      * Toggles the status of the conversation between open and resolved
      * @returns conversation_status_toggle Success
      * @throws ApiError
+     * {@link https://www.chatwoot.com/developers/api/#tag/Conversations/operation/toggle-status-of-a-conversation}
      */
-    public toggleStatusOfAConversation({
+    public toggleStatus({
         accountId,
         conversationId,
         data,

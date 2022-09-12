@@ -20,8 +20,9 @@ export class CustomAttributes {
      * Get details of custom attributes in an Account
      * @returns custom_attribute Success
      * @throws ApiError
+     * {@link https://www.chatwoot.com/developers/api/#tag/Custom-Attributes/operation/get-account-custom-attribute}
      */
-    public getAccountCustomAttribute({
+    public list({
         accountId,
         attributeModel,
     }: {
@@ -54,8 +55,9 @@ export class CustomAttributes {
      * Add a new custom attribute to account
      * @returns custom_attribute Success
      * @throws ApiError
+     * {@link https://www.chatwoot.com/developers/api/#tag/Custom-Attributes/operation/add-new-custom-attribute-to-account}
      */
-    public addNewCustomAttributeToAccount({
+    public create({
         accountId,
         data,
     }: {
@@ -83,8 +85,9 @@ export class CustomAttributes {
      * Get the details of a custom attribute in the account
      * @returns custom_attribute Success
      * @throws ApiError
+     * {@link https://www.chatwoot.com/developers/api/#tag/Custom-Attributes/operation/get-details-of-a-single-custom-attribute}
      */
-    public getDetailsOfASingleCustomAttribute({
+    public get({
         accountId,
         id,
     }: {
@@ -116,8 +119,9 @@ export class CustomAttributes {
      * Update a custom attribute in account
      * @returns custom_attribute Success
      * @throws ApiError
+     * {@link https://www.chatwoot.com/developers/api/#tag/Custom-Attributes/operation/update-custom-attribute-in-account}
      */
-    public updateCustomAttributeInAccount({
+    public update({
         accountId,
         id,
         data,
@@ -152,8 +156,9 @@ export class CustomAttributes {
      * Remove a custom attribute from account
      * @returns any Success
      * @throws ApiError
+     * {@link https://www.chatwoot.com/developers/api/#tag/Custom-Attributes/operation/delete-custom-attribute-from-account}
      */
-    public deleteCustomAttributeFromAccount({
+    public delete({
         accountId,
         id,
     }: {

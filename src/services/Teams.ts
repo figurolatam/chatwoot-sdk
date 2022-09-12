@@ -22,7 +22,7 @@ export class Teams {
      * @returns team Success
      * @throws ApiError
      */
-    public listAllTeams({
+    public list({
         accountId,
     }: {
         /**
@@ -48,7 +48,7 @@ export class Teams {
      * @returns team Success
      * @throws ApiError
      */
-    public createTeam({
+    public create({
         accountId,
         data,
     }: {
@@ -77,7 +77,7 @@ export class Teams {
      * @returns team Success
      * @throws ApiError
      */
-    public getDetailsOfASingleTeam({
+    public get({
         accountId,
         teamId,
     }: {
@@ -110,7 +110,7 @@ export class Teams {
      * @returns team Success
      * @throws ApiError
      */
-    public updateTeam({
+    public update({
         accountId,
         teamId,
         data,
@@ -145,7 +145,7 @@ export class Teams {
      * @returns any Success
      * @throws ApiError
      */
-    public deleteTeam({
+    public delete({
         accountId,
         teamId,
     }: {
@@ -178,7 +178,7 @@ export class Teams {
      * @returns agent Success
      * @throws ApiError
      */
-    public getTeamMembers({
+    public listMembers({
         accountId,
         teamId,
     }: {
@@ -211,7 +211,7 @@ export class Teams {
      * @returns agent Success
      * @throws ApiError
      */
-    public addNewAgentToTeam({
+    public addAgent({
         accountId,
         teamId,
         data,
@@ -295,7 +295,7 @@ export class Teams {
      * @returns any Success
      * @throws ApiError
      */
-    public deleteAgentInTeam({
+    public removeAgent({
         accountId,
         teamId,
         data,

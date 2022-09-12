@@ -1,11 +1,11 @@
 /* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
-import type { public_conversation } from "../models/public_conversation";
+import type { public_conversation } from "../../models/public_conversation";
 
-import type { CancelablePromise } from "../core/CancelablePromise";
-import { ChatwootAPIConfig } from "../core/ChatwootAPI";
-import { request as __request } from "../core/request";
+import type { CancelablePromise } from "../../core/CancelablePromise";
+import { ChatwootAPIConfig } from "../../core/ChatwootAPI";
+import { request as __request } from "../../core/request";
 
 export class ConversationsApi {
     private chatwootAPI: ChatwootAPIConfig;
@@ -20,7 +20,7 @@ export class ConversationsApi {
      * @returns public_conversation Success
      * @throws ApiError
      */
-    public createConversation({
+    public create({
         inboxIdentifier,
         contactIdentifier,
     }: {
@@ -52,7 +52,7 @@ export class ConversationsApi {
      * @returns public_conversation Success
      * @throws ApiError
      */
-    public listAllConversations({
+    public list({
         inboxIdentifier,
         contactIdentifier,
     }: {

@@ -1,16 +1,14 @@
 /* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
-import type { integrations_app } from "../models/integrations_app";
-import type { integrations_hook } from "../models/integrations_hook";
-import type { integrations_hook_create_payload } from "../models/integrations_hook_create_payload";
-import type { integrations_hook_update_payload } from "../models/integrations_hook_update_payload";
+import type { canned_response } from "../models/canned_response";
+import type { canned_response_create_update_payload } from "../models/canned_response_create_update_payload";
 
 import type { CancelablePromise } from "../core/CancelablePromise";
 import { ChatwootAPIConfig } from "../core/ChatwootAPI";
 import { request as __request } from "../core/request";
 
-export class Integrations {
+export class CannedResponses {
     private chatwootAPI: ChatwootAPIConfig;
 
     constructor({ config }: { config: ChatwootAPIConfig }) {
@@ -18,39 +16,38 @@ export class Integrations {
     }
 
     /**
-     * List all the Integrations
-     * Get the details of all Integrations available for the account
-     * @returns integrations_app Success
+     * List all Canned Responses in an Account
+     * Get Details of Canned Responses in an Account
+     * @returns canned_response Success
      * @throws ApiError
      */
-    public getDetailsOfAllIntegrations({
+    public list({
         accountId,
     }: {
         /**
          * The numeric ID of the account
          */
         accountId: number;
-    }): CancelablePromise<Array<integrations_app>> {
+    }): CancelablePromise<Array<canned_response>> {
         return __request(this.chatwootAPI, {
             method: "GET",
-            url: "/api/v1/accounts/{account_id}/integrations/apps",
+            url: "/api/v1/accounts/{account_id}/canned_responses",
             path: {
                 account_id: accountId,
             },
             errors: {
-                401: `Unauthorized`,
-                404: `Url not found`,
+                403: `Access denied`,
             },
         });
     }
 
     /**
-     * Create an integration hook
-     * Create an integration hook
-     * @returns integrations_hook Success
+     * Add a New Canned Response
+     * Add a new Canned Response to Account
+     * @returns canned_response Success
      * @throws ApiError
      */
-    public createIntegrationHook({
+    public create({
         accountId,
         data,
     }: {
@@ -58,30 +55,29 @@ export class Integrations {
          * The numeric ID of the account
          */
         accountId: number;
-        data: integrations_hook_create_payload;
-    }): CancelablePromise<integrations_hook> {
+        data: canned_response_create_update_payload;
+    }): CancelablePromise<canned_response> {
         return __request(this.chatwootAPI, {
             method: "POST",
-            url: "/api/v1/accounts/{account_id}/integrations/hooks",
+            url: "/api/v1/accounts/{account_id}/canned_responses",
             path: {
                 account_id: accountId,
             },
             body: data,
             errors: {
-                401: `Unauthorized`,
+                403: `Access denied`,
             },
         });
     }
-
     /**
-     * Update an Integration Hook
-     * Update an Integration Hook
-     * @returns integrations_hook Success
+     * Update Canned Response in Account
+     * Update a Canned Response in Account
+     * @returns canned_response Success
      * @throws ApiError
      */
-    public updateIntegrationsHook({
+    public update({
         accountId,
-        hookId,
+        id,
         data,
     }: {
         /**
@@ -89,54 +85,54 @@ export class Integrations {
          */
         accountId: number;
         /**
-         * The numeric ID of the integration hook
+         * The ID of the canned response to be updated.
          */
-        hookId: number;
-        data: integrations_hook_update_payload;
-    }): CancelablePromise<integrations_hook> {
+        id: number;
+        data: canned_response_create_update_payload;
+    }): CancelablePromise<canned_response> {
         return __request(this.chatwootAPI, {
             method: "PATCH",
-            url: "/api/v1/accounts/{account_id}/integrations/hooks/{hook_id}",
+            url: "/api/v1/accounts/{account_id}/canned_responses/{id}",
             path: {
                 account_id: accountId,
-                hook_id: hookId,
+                id: id,
             },
             body: data,
             errors: {
-                401: `Unauthorized`,
+                403: `Access denied`,
+                404: `Agent not found`,
             },
         });
     }
-
     /**
-     * Delete an Integration Hook
-     * Delete an Integration Hook
+     * Remove a Canned Response from Account
+     * Remove a Canned Response from Account
      * @returns any Success
      * @throws ApiError
      */
-    public deleteIntegrationHook({
+    public delete({
         accountId,
-        hookId,
+        id,
     }: {
         /**
          * The numeric ID of the account
          */
         accountId: number;
         /**
-         * The numeric ID of the integration hook
+         * The ID of the canned response to be deleted
          */
-        hookId: number;
+        id: number;
     }): CancelablePromise<any> {
         return __request(this.chatwootAPI, {
             method: "DELETE",
-            url: "/api/v1/accounts/{account_id}/integrations/hooks/{hook_id}",
+            url: "/api/v1/accounts/{account_id}/canned_responses/{id}",
             path: {
                 account_id: accountId,
-                hook_id: hookId,
+                id: id,
             },
             errors: {
-                401: `Unauthorized`,
-                404: `The hook does not exist in the account`,
+                403: `Access denied`,
+                404: `Canned Response not found`,
             },
         });
     }

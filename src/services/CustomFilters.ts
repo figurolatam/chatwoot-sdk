@@ -20,8 +20,9 @@ export class CustomFilters {
      * List all custom filters in a category of a user
      * @returns custom_filter Success
      * @throws ApiError
+     * {@link https://www.chatwoot.com/developers/api/#tag/Custom-Filters/operation/list-all-filters}
      */
-    public listAllFilters({
+    public list({
         accountId,
         filterType,
     }: {
@@ -54,8 +55,9 @@ export class CustomFilters {
      * Create a custom filter in the account
      * @returns custom_filter Success
      * @throws ApiError
+     * {@link https://www.chatwoot.com/developers/api/#tag/Custom-Filters/operation/create-a-custom-filter}
      */
-    public createCustomFilter({
+    public create({
         accountId,
         data,
         filterType,
@@ -91,8 +93,9 @@ export class CustomFilters {
      * Get the details of a custom filter in the account
      * @returns custom_filter Success
      * @throws ApiError
+     * {@link https://www.chatwoot.com/developers/api/#tag/Custom-Filters/operation/get-details-of-a-single-custom-filter}
      */
-    public getDetailsOfASingleCustomFilter({
+    public get({
         accountId,
         customFilterId,
     }: {
@@ -124,8 +127,9 @@ export class CustomFilters {
      * Update a custom filter's attributes
      * @returns custom_filter Success
      * @throws ApiError
+     * {@link https://www.chatwoot.com/developers/api/#tag/Custom-Filters/operation/update-a-custom-filter}
      */
-    public updateCustomFilter({
+    public update({
         accountId,
         customFilterId,
         data,
@@ -159,8 +163,9 @@ export class CustomFilters {
      * Delete a custom filter from the account
      * @returns any Success
      * @throws ApiError
+     * {@link https://www.chatwoot.com/developers/api/#tag/Custom-Filters/operation/delete-a-custom-filter}
      */
-    public deleteCustomFilter({
+    public delete({
         accountId,
         customFilterId,
     }: {

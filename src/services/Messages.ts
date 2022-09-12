@@ -25,7 +25,7 @@ export class Messages {
      * @returns any Success
      * @throws ApiError
      */
-    public listAllMessages({
+    public list({
         accountId,
         conversationId,
     }: {
@@ -58,7 +58,7 @@ export class Messages {
      * @returns any Success
      * @throws ApiError
      */
-    public createMessage({
+    public create({
         accountId,
         conversationId,
         data,
@@ -94,7 +94,7 @@ export class Messages {
      * @returns any Success
      * @throws ApiError
      */
-    public deleteMessage({
+    public delete({
         accountId,
         conversationId,
         messageId,

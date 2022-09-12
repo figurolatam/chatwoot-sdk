@@ -21,7 +21,7 @@ export class AutomationRule {
      * @returns automation_rule Success
      * @throws ApiError
      */
-    public getAccountAutomationRule({
+    public list({
         accountId,
         page = 1,
     }: {
@@ -55,7 +55,7 @@ export class AutomationRule {
      * @returns automation_rule Success
      * @throws ApiError
      */
-    public createAutomationRule({
+    public create({
         accountId,
         data,
     }: {
@@ -84,7 +84,7 @@ export class AutomationRule {
      * @returns automation_rule Success
      * @throws ApiError
      */
-    public getDetailsOfAutomationRule({
+    public get({
         accountId,
         id,
     }: {
@@ -117,7 +117,7 @@ export class AutomationRule {
      * @returns automation_rule Success
      * @throws ApiError
      */
-    public updateAutomationRule({
+    public update({
         accountId,
         id,
         data,
@@ -153,7 +153,7 @@ export class AutomationRule {
      * @returns any Success
      * @throws ApiError
      */
-    public deleteAutomationRule({
+    public delete({
         accountId,
         id,
     }: {

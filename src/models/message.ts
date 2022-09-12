@@ -2,6 +2,10 @@
 /* tslint:disable */
 /* eslint-disable */
 
+import { agent } from "./agent";
+import { agent_bot } from "./agent_bot";
+import { user } from "./user";
+
 export type message = {
     /**
      * The text content of the message
@@ -34,7 +38,7 @@ export type message = {
     /**
      * User/Agent/AgentBot object
      */
-    sender?: any;
+    sender?: user | agent | agent_bot;
     /**
      * ID of the conversation
      */
