@@ -72,6 +72,9 @@ export class Messages {
          */
         conversationId: number;
         data: conversation_message_create;
+        /**
+         * The payload as {@link conversation_message_create}
+         */
     }): CancelablePromise<generic_id & message> {
         return __request(this.chatwootAPI, {
             method: "POST",

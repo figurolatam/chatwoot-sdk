@@ -1,5 +1,5 @@
 # Chatwoot API SDK
-![npm (scoped)](https://img.shields.io/npm/v/@figuro/chatwoot-sdk) ![NPM](https://img.shields.io/npm/l/@figuro/chatwoot-sdk)
+![npm (scoped)](https://img.shields.io/npm/v/@figuro/chatwoot-sdk) ![GitHub Workflow Status](https://img.shields.io/github/workflow/status/figurolatam/chatwoot-sdk/Node.js%20Package) ![NPM](https://img.shields.io/npm/l/@figuro/chatwoot-sdk)
 
 A client to connect with Chatwoot from Javascript with Typescript support.
 
