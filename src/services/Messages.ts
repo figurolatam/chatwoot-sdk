@@ -8,6 +8,9 @@ import type { message } from "../models/message";
 import type { CancelablePromise } from "../core/CancelablePromise";
 import { ChatwootAPIConfig } from "../core/ChatwootAPI";
 import { request as __request } from "../core/request";
+import { Blob } from 'buffer';
+import { Readable } from "stream";
+import { file_upload } from "../models/file_upload";
 
 /**
  * Messages calls from Platform API
@@ -76,6 +79,21 @@ export class Messages {
          * The payload as {@link conversation_message_create}
          */
     }): CancelablePromise<generic_id & message> {
+        const { attachments, ...clone } = data;
+        let files:file_upload[] | undefined;
+        if (attachments) {
+            files = attachments.map<file_upload>(value => {
+                return { 
+                    content: new Readable({
+                        read() {
+                            this.push(Buffer.from(value?.content as string, value?.encoding as BufferEncoding));
+                            this.push(null);
+                        },
+                    }),
+                    filename: value?.filename as string,
+            };
+            });
+        }
         return __request(this.chatwootAPI, {
             method: "POST",
             url: "/api/v1/accounts/{account_id}/conversations/{conversation_id}/messages",
@@ -83,7 +101,8 @@ export class Messages {
                 account_id: accountId,
                 conversation_id: conversationId,
             },
-            body: data,
+            formData: { ...clone, attachments: files},
+
             errors: {
                 403: `Access denied`,
                 404: `Conversation not found`,

@@ -11,6 +11,7 @@ import type { ApiResult } from "./ApiResult";
 import { CancelablePromise } from "./CancelablePromise";
 import type { OnCancel } from "./CancelablePromise";
 import type { ChatwootAPIConfig } from "./ChatwootAPI";
+import { file_upload } from "../models/file_upload";
 
 const isDefined = <T>(value: T | null | undefined): value is Exclude<T, null | undefined> => {
     return value !== undefined && value !== null;
@@ -19,6 +20,15 @@ const isDefined = <T>(value: T | null | undefined): value is Exclude<T, null | u
 const isString = (value: any): value is string => {
     return typeof value === "string";
 };
+
+const isFileUpload = (value: any): value is file_upload => {
+    return (
+        isDefined(value) && 
+        typeof value === "object" &&
+        value.content !== undefined &&
+        value.filename !== undefined
+    );
+} 
 
 const isStringWithValue = (value: any): value is string => {
     return isString(value) && value !== "";
@@ -110,7 +120,9 @@ const getFormData = (options: ApiRequestOptions): FormData | undefined => {
         const formData = new FormData();
 
         const process = (key: string, value: any) => {
-            if (isString(value) || isBlob(value)) {
+            if (isFileUpload(value)) {
+                formData.append("attachments[]", value.content, value.filename);
+            } else if (isString(value) || isBlob(value)) {
                 formData.append(key, value);
             } else {
                 formData.append(key, JSON.stringify(value));

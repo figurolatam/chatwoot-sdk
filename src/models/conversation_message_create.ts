@@ -19,5 +19,9 @@ export type conversation_message_create = {
     /**
      * attributes based on your content type
      */
-    content_attributes?: any;
+    content_attributes?: Record<string, unknown>;
+    /**
+     * attributes based on your content type
+     */
+    attachments?: Array<Record<string, unknown>>;
 };

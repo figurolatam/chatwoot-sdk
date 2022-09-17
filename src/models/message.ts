@@ -18,7 +18,7 @@ export type message = {
     /**
      * The content attributes for each content_type
      */
-    content_attributes?: any;
+    content_attributes?: Record<string, unknown>;
     /**
      * The type of the message
      */
