@@ -8,7 +8,7 @@ import type { message } from "../models/message";
 import type { CancelablePromise } from "../core/CancelablePromise";
 import { ChatwootAPIConfig } from "../core/ChatwootAPI";
 import { request as __request } from "../core/request";
-import { Blob } from 'buffer';
+import { Blob } from "buffer";
 import { Readable } from "stream";
 import { file_upload } from "../models/file_upload";
 
@@ -80,10 +80,10 @@ export class Messages {
          */
     }): CancelablePromise<generic_id & message> {
         const { attachments, ...clone } = data;
-        let files:file_upload[] | undefined;
+        let files: file_upload[] | undefined;
         if (attachments) {
-            files = attachments.map<file_upload>(value => {
-                return { 
+            files = attachments.map<file_upload>((value) => {
+                return {
                     content: new Readable({
                         read() {
                             this.push(Buffer.from(value?.content as string, value?.encoding as BufferEncoding));
@@ -91,7 +91,7 @@ export class Messages {
                         },
                     }),
                     filename: value?.filename as string,
-            };
+                };
             });
         }
         return __request(this.chatwootAPI, {
@@ -101,7 +101,7 @@ export class Messages {
                 account_id: accountId,
                 conversation_id: conversationId,
             },
-            formData: { ...clone, attachments: files},
+            formData: { ...clone, attachments: files },
 
             errors: {
                 403: `Access denied`,

@@ -22,13 +22,8 @@ const isString = (value: any): value is string => {
 };
 
 const isFileUpload = (value: any): value is file_upload => {
-    return (
-        isDefined(value) && 
-        typeof value === "object" &&
-        value.content !== undefined &&
-        value.filename !== undefined
-    );
-} 
+    return isDefined(value) && typeof value === "object" && value.content !== undefined && value.filename !== undefined;
+};
 
 const isStringWithValue = (value: any): value is string => {
     return isString(value) && value !== "";
