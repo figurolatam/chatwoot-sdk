@@ -1,11 +1,11 @@
 # Chatwoot API SDK
-[![npm (scoped)](https://img.shields.io/npm/v/@figuro/chatwoot-sdk)](https://www.npmjs.com/package/@figuro/chatwoot-sdk) [![GitHub Workflow Status](https://img.shields.io/github/workflow/status/figurolatam/chatwoot-sdk/Node.js%20Package)](https://github.com/figurolatam/chatwoot-sdk/actions) [![NPM](https://img.shields.io/npm/l/@figuro/chatwoot-sdk)](https://opensource.org/licenses/MIT)
+[![npm (scoped)](https://img.shields.io/npm/v/@figuro/chatwoot-sdk)](https://www.npmjs.com/package/@figuro/chatwoot-sdk) ![GitHub Workflow Status (with branch)](https://img.shields.io/github/actions/workflow/status/figurolatam/chatwoot-sdk/npm-publish.yml?logo=github-actions) [![NPM](https://img.shields.io/npm/l/@figuro/chatwoot-sdk)](https://opensource.org/licenses/MIT)
 
-This SDK provides a Javascript client to connect with Chatwoot API. Typescript is fully supported.
+The Chatwoot SDK is a JavaScript client that allows developers to connect to the Chatwoot API. With full TypeScript support, the SDK provides an easy-to-use interface for developers to interact with the Chatwoot platform programmatically.
 
-This project depends only on Axios for advanced data fetching support and compatibility, not other dependencies are used.
+The SDK is built with simplicity in mind and only depends on Axios for advanced data fetching support and compatibility. This means that developers can enjoy a lightweight, efficient SDK without the added burden of extraneous dependencies.
 
-Please refer to [Chatwoot's documentation](https://www.chatwoot.com/developers/api/) for further reference about the API.
+To learn more about the Chatwoot API, please refer to [Chatwoot's documentation](https://www.chatwoot.com/developers/api/). There, you'll find everything you need to get started, including detailed API reference documentation, sample code, and tutorials.
 
 ## Installation
 
@@ -74,3 +74,15 @@ client.messages.create({
         console.error(err);
     });
 ```
+
+## Documentation
+The full documentation for the Chatwoot API can be found [Chatwoot's documentation](https://www.chatwoot.com/developers/api/).
+
+## Contributing
+If you'd like to contribute, please open an issue or pull request on this repository. We'd love to hear from you!
+
+## License
+This SDK is licensed under the [MIT License](https://opensource.org/licenses/MIT).
+
+## Support
+If you have any questions or need help, please reach out to us by opening an issue on this repository.
