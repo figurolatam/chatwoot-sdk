@@ -23,7 +23,7 @@ export class Profile {
     public profile(): CancelablePromise<user> {
         return __request(this.chatwootAPI, {
             method: "GET",
-            url: "/profile",
+            url: "/api/v1/profile",
             errors: {
                 401: `Unauthorized`,
             },
