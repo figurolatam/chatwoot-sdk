@@ -246,7 +246,9 @@ export class Conversations {
             query: {
                 page: page,
             },
-            body: payload,
+            body: {
+                payload
+            },
             errors: {
                 400: `Bad Request Error`,
             },
