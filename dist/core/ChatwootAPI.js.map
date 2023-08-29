@@ -1,0 +1,1 @@
+{"version":3,"file":"ChatwootAPI.js","sourceRoot":"","sources":["../../src/core/ChatwootAPI.ts"],"names":[],"mappings":";;;AAmBa,QAAA,WAAW,GAAsB;IAC1C,QAAQ,EAAE,0BAA0B;IACpC,gBAAgB,EAAE,KAAK;IACvB,WAAW,EAAE,SAAS;IACtB,KAAK,EAAE,SAAS;IAChB,QAAQ,EAAE,SAAS;IACnB,QAAQ,EAAE,SAAS;IACnB,OAAO,EAAE,SAAS;IAClB,WAAW,EAAE,SAAS;CACzB,CAAC"}

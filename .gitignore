@@ -83,6 +83,4 @@ typings/
 .pki/
 .pm2/
 
-dist
-
 .npmrc
