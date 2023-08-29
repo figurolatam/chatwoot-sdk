@@ -24,6 +24,12 @@ export type conversation_message_create = {
      * attributes based on your content type
      */
     attachments?: Array<Record<string, unknown>>;
+    /**
+     * The id source
+     */
     source_id?: string;
+    /**
+     * The reply id source
+     */
     source_reply_id?: string;
 };
