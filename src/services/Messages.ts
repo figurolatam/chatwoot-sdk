@@ -2,6 +2,7 @@
 /* tslint:disable */
 /* eslint-disable */
 import type { conversation_message_create } from "../models/conversation_message_create";
+import type { conversation_message_update } from "../models/conversation_message_update";
 import type { generic_id } from "../models/generic_id";
 import type { message } from "../models/message";
 
@@ -130,9 +131,9 @@ export class Messages {
          * The numeric ID of the conversation
          */
         conversationId: number;
-        data: conversation_message_create;
+        data: conversation_message_update;
         /**
-         * The payload as {@link conversation_message_create}
+         * The payload as {@link conversation_message_update}
          */
         /**
          * The numeric ID of the message
