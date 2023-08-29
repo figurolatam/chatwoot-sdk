@@ -111,6 +111,66 @@ export class Messages {
     }
 
     /**
+     * Update a Message
+     * Update a message in the conversation
+     * @returns any Success
+     * @throws ApiError
+     */
+    public update({
+        accountId,
+        conversationId,
+        data,
+        messageId,
+    }: {
+        /**
+         * The numeric ID of the account
+         */
+        accountId: number;
+        /**
+         * The numeric ID of the conversation
+         */
+        conversationId: number;
+        data: conversation_message_create;
+        /**
+         * The payload as {@link conversation_message_create}
+         */
+        /**
+         * The numeric ID of the message
+         */
+        messageId: number;
+    }): CancelablePromise<generic_id & message> {
+        const { attachments, ...clone } = data;
+        let files: file_upload[] | undefined;
+        if (attachments) {
+            files = attachments.map<file_upload>((value) => {
+                return {
+                    content: new Readable({
+                        read() {
+                            this.push(Buffer.from(value?.content as string, value?.encoding as BufferEncoding));
+                            this.push(null);
+                        },
+                    }),
+                    filename: value?.filename as string,
+                };
+            });
+        }
+        return __request(this.chatwootAPI, {
+            method: "PATCH",
+            url: "/api/v1/accounts/{account_id}/conversations/{conversation_id}/messages/{message_id}",
+            path: {
+                account_id: accountId,
+                conversation_id: conversationId,
+                message_id: messageId,
+            },
+            formData: { ...clone, attachments: files },
+
+            errors: {
+                403: `Access denied`,
+                404: `Conversation not found`,
+            },
+        });
+    }
+    /**
      * Delete a message
      * Delete a message and it's attachments from the conversation.
      * @returns any Success
