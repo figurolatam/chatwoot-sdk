@@ -43,4 +43,12 @@ export type message = {
      * ID of the conversation
      */
     conversation_id?: number;
+    /**
+     * ID of the message
+     */
+    source_id?: string;
+    /**
+     * ID of the reply message
+     */
+    source_reply_id?: string;
 };

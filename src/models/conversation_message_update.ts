@@ -2,11 +2,11 @@
 /* tslint:disable */
 /* eslint-disable */
 
-export type conversation_message_create = {
+export type conversation_message_update = {
     /**
      * The content of the message
      */
-    content: string;
+    content?: string;
     message_type?: "outgoing" | "incoming";
     /**
      * Flag to identify if it is a private note
@@ -24,12 +24,6 @@ export type conversation_message_create = {
      * attributes based on your content type
      */
     attachments?: Array<Record<string, unknown>>;
-    /**
-     * The id source
-     */
     source_id?: string;
-    /**
-     * The reply id source
-     */
     source_reply_id?: string;
 };
