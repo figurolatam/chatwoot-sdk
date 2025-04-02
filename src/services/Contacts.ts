@@ -337,7 +337,7 @@ export class Contacts {
             query: {
                 page: page,
             },
-            body: payload,
+            body: {payload},
             errors: {
                 400: `Bad Request Error`,
             },
