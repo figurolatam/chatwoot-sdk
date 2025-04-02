@@ -87,6 +87,8 @@ import { ChatwootAPIConfig } from "./core/ChatwootAPI";
 
 export default class ChatwootClient {
     private chatwootAPI: ChatwootAPIConfig;
+    public readonly client;
+    public readonly platform;
 
     constructor({ config }: { config: ChatwootAPIConfig }) {
         this.chatwootAPI = config;
@@ -128,10 +130,7 @@ export default class ChatwootClient {
         this.users = new Users({ config: config });
         this.webhooks = new Webhooks({ config: config });
     }
-
-    public client = {};
-    public platform = {};
-
+    
     public accountAgentBots: AccountAgentBots;
     public agentBots: AgentBots;
     public agents: Agents;
